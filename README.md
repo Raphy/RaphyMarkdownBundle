@@ -1,6 +1,6 @@
 # RaphyMarkdownBundle
 
-[![Build Status](https://img.shields.io/travis/Raphy/EmptyProjectSkeleton.svg)](https://travis-ci.org/Raphy/RaphyMarkdownBundle)
+[![Build Status](https://img.shields.io/travis/Raphy/RaphyMarkdownBundle.svg)](https://travis-ci.org/Raphy/RaphyMarkdownBundle)
 [![GitHub license](https://img.shields.io/github/license/Raphy/RaphyMarkdownBundle.svg)](LICENSE)
 
 Provides a fully-featured Markdown bundle
