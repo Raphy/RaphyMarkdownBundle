@@ -6,6 +6,12 @@
 
 Provides a fully-featured Markdown bundle
 
+# Requirements
+
+The bundle supports:
+- PHP >= 5.4
+- Symfony ^2.7 | ^3.0
+
 ## Documentation
 
 To have an idea of how the bundle works, see the [Basic usage](Resources/doc/basic-usage.md) documentation page.
