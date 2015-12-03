@@ -13,6 +13,7 @@ namespace Raphy\Symfony\MarkdownBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Reference;
 
 /**
  * Class ParserPass.
@@ -32,16 +33,11 @@ class ParserPass implements CompilerPassInterface
         $collectionDefinition = $container->findDefinition('raphy_markdown.parser.collection');
         $taggedServices = $container->findTaggedServiceIds('markdown.parser');
         foreach ($taggedServices as $serviceId => $tags) {
-            var_dump($serviceId);
-            $serviceDefition = $container->getDefinition($serviceId);
-            if (!$serviceDefition->isPublic()) {
-                throw new \InvalidArgumentException(sprintf('The service "%s" must be public as markdown parser extensions are lazy-loaded.', $serviceId));
-            }
             foreach ($tags as $attributes) {
                 if (!array_key_exists('alias', $attributes)) {
                     throw new \InvalidArgumentException(sprintf('The service "%s" must have the "alias" attribute.', $serviceId));
                 }
-                $collectionDefinition->addMethodCall('addParserService', [$attributes['alias'], $serviceId]);
+                $collectionDefinition->addMethodCall('addParser', [$attributes['alias'], new Reference($serviceId)]);
             }
         }
     }

@@ -20,66 +20,78 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @author Raphael De Freitas <raphael@de-freitas.net>
  */
-class ParserCollection implements ContainerAwareInterface
+class ParserCollection
 {
     /**
      * Contains the Markdown parser services.
      *
      * @var ArrayCollection
      */
-    private $parserServices;
-
-    /**
-     * Contains the ContainerInterface instance.
-     *
-     * @var ContainerInterface
-     */
-    private $container;
+    private $parsers;
 
     /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->parserServices = new ArrayCollection();
+        $this->parsers = new ArrayCollection();
     }
 
     /**
-     * Adds a parser service to collection.
+     * Adds a parser to collection.
      *
-     * @param string $alias     The parser name/alias
-     * @param string $serviceId The parser service ID
+     * @param string $name The parser name
+     * @param MarkdownParserInterface $parser The MarkdownParserInterface instance
      */
-    public function addParserService($alias, $serviceId)
+    public function addParser($name, MarkdownParserInterface $parser)
     {
-        $this->parserServices[$alias] = $serviceId;
+        $this->parsers[$name] = $parser;
+    }
+
+    /**
+     * Checks whether a parser is in collection
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function hasParser($name)
+    {
+        return $this->parsers->containsKey($name);
     }
 
     /**
      * Gets a MarkdownParserInterface of the specified name/alias.
      *
-     * @param string $alias The parser name/alias
+     * @param string $name The parser name
      *
      * @return MarkdownParserInterface
      */
-    public function getParser($alias)
+    public function getParser($name)
     {
-        if ($this->container === null || !$this->parserServices->containsKey($alias)) {
-            throw new \InvalidArgumentException(sprintf('The Markdown parser "%s" is not found.', $alias));
+        if ($this->hasParser($name) == false) {
+            throw new \InvalidArgumentException(sprintf('The Markdown parser "%s" is not found.', $name));
         }
-        $parser = $this->container->get($this->parserServices->get($alias));
-        if (!$parser instanceof MarkdownParserInterface) {
-            throw new \InvalidArgumentException(sprintf('The Markdown parser "%s" not implements "MarkdownParserInterface".', $alias));
-        }
-
-        return $parser;
+        return $this->parsers->get($name);
     }
 
     /**
-     * {@inheritdoc}
+     * Removes a parser from collection
+     *
+     * @param string $name
+     * @return MarkdownParserInterface|null
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function removeParser($name)
     {
-        $this->container = $container;
+        return $this->parsers->remove($name);
+    }
+
+    /**
+     * Gets the parsers collection
+     *
+     * @return ArrayCollection
+     */
+    public function getParsers()
+    {
+        return $this->parsers;
     }
 }

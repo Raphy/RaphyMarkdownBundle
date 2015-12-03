@@ -2,8 +2,6 @@ services:
 
     raphy_markdown.parser.collection:
         class: Raphy\Symfony\MarkdownBundle\Parser\ParserCollection
-        calls:
-            - [setContainer, ["@service_container"]]
 
     raphy_markdown.parser.parsedown:
         class: Raphy\Symfony\MarkdownBundle\Parser\ParsedownParser
