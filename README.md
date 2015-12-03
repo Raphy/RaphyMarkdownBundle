@@ -22,7 +22,7 @@ See the `doc` directory for more detailed documentation or just start with [main
 - [X] **Parser modularity** Allow to use any Markdown parser library (by default use [Parsedown](https://github.com/erusev/parsedown))
 - [x] **Twig filter** Provides the Twig filter `markdown`
 - [ ] **Editor** Use a textarea in a form as Markdown editor
-- [ ] **Multi parser** Add multiple parser and use a specific parser when wanted
+- [x] **Multi parser** Add multiple parser and use a specific parser when wanted
 
 ## License
 

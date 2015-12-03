@@ -1,10 +1,18 @@
 services:
 
+    raphy_markdown.parser.collection:
+        class: Raphy\Symfony\MarkdownBundle\Parser\ParserCollection
+        calls:
+            - [setContainer, ["@service_container"]]
+
     raphy_markdown.parser.parsedown:
         class: Raphy\Symfony\MarkdownBundle\Parser\ParsedownParser
+        tags:
+            - { name: markdown.parser, alias: parsedown }
+            - { name: markdown.parser, alias: default }
 
     raphy_markdown.twig.extension.markdown:
         class: Raphy\Symfony\MarkdownBundle\Twig\Extension\MarkdownTwigExtension
-        arguments: ["@raphy_markdown.parser"]
+        arguments: ["@raphy_markdown.parser.collection"]
         tags:
             - { name: twig.extension }

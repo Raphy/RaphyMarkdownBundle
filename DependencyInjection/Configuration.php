@@ -29,12 +29,6 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('raphy_markdown');
 
-        $rootNode
-            ->addDefaultsIfNotSet()
-            ->children()
-                ->scalarNode('parser')->cannotBeEmpty()->defaultValue('raphy_markdown.parser.parsedown')->end()
-            ->end();
-
         return $treeBuilder;
     }
 }

@@ -26,11 +26,4 @@ interface MarkdownParserInterface
      * @return string The rendered HTML
      */
     public function parse($string);
-
-    /**
-     * Gets the parser name.
-     *
-     * @return string
-     */
-    public function getName();
 }

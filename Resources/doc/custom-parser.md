@@ -28,28 +28,23 @@ class MyMarkdownParser implements MarkdownParserInterface
 
 Now we have our parser, the class must be registered as service to be injected in the bundle.
 
-Register the class as service in `services.yml`
+Register the class as service in `services.yml` with the tag `markdown.parser`
 ```yaml
 services:
     # ...
     my_markdown_parser:
         class: AppBundle\Markdown\MyMarkdownParser
+        tags:
+            - { name: markdown.parser, alias: my_markdown_parser } # The alias attribute is required
     # ...
 ```
 
-## Configure the bundle
+## Use it
 
-We have our parser registerd as service. Now, configure the bundle to use our parser instead the default one.
-
-Go in the file `config.yml` and configure as following
-
-```yml
-# RaphyMarkdown configuration
-raphy_markdown:
-    parser: my_markdown_parser
+Now we can use the Twig filter `markdown` with our new Markdown parser
+```twig
+{{ my_var | markdown('my_markdown_parser') }}
 ```
-
-The bundle will now parse the Markdown with your custom parser.
 
 ---
 

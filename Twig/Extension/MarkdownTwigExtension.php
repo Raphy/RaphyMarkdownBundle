@@ -11,7 +11,7 @@
 
 namespace Raphy\Symfony\MarkdownBundle\Twig\Extension;
 
-use Raphy\Symfony\MarkdownBundle\Parser\MarkdownParserInterface;
+use Raphy\Symfony\MarkdownBundle\Parser\ParserCollection;
 
 /**
  * Class MarkdownTwigExtension.
@@ -21,20 +21,20 @@ use Raphy\Symfony\MarkdownBundle\Parser\MarkdownParserInterface;
 class MarkdownTwigExtension extends \Twig_Extension
 {
     /**
-     * Contains a MarkdownParserInterface instance.
+     * Contains a the collection of parsers.
      *
-     * @var MarkdownParserInterface
+     * @var ParserCollection
      */
-    private $markdownParser;
+    private $parserCollection;
 
     /**
      * Constructor.
      *
-     * @param MarkdownParserInterface $markdownParser A MarkdownParserInterface instance
+     * @param ParserCollection $parserCollection The collection of parsers
      */
-    public function __construct(MarkdownParserInterface $markdownParser)
+    public function __construct(ParserCollection $parserCollection)
     {
-        $this->markdownParser = $markdownParser;
+        $this->parserCollection = $parserCollection;
     }
 
     /**
@@ -43,8 +43,23 @@ class MarkdownTwigExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter('markdown', array($this->markdownParser, 'parse'), array('is_safe' => array('html'))),
+            new \Twig_SimpleFilter('markdown', [$this, 'markdownFilter'], ['is_safe' => ['html']]),
         );
+    }
+
+    /**
+     * Render the filter makrdown.
+     *
+     * @param string $input      The input content to parse
+     * @param string $parserName The parser name/alias
+     *
+     * @return string The rendered HTML
+     */
+    public function markdownFilter($input, $parserName = 'default')
+    {
+        $parser = $this->parserCollection->getParser($parserName);
+
+        return $parser->parse($input);
     }
 
     /**

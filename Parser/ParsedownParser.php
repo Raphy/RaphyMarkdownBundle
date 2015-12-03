@@ -25,12 +25,4 @@ class ParsedownParser extends \Parsedown implements MarkdownParserInterface
     {
         return $this->text($string);
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'parsedown';
-    }
 }
