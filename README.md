@@ -2,6 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/Raphy/RaphyMarkdownBundle.svg)](https://travis-ci.org/Raphy/RaphyMarkdownBundle)
 [![GitHub license](https://img.shields.io/github/license/Raphy/RaphyMarkdownBundle.svg)](LICENSE)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/b675534d-9c5c-490a-aefa-492a48ca4e16/big.png)](https://insight.sensiolabs.com/projects/b675534d-9c5c-490a-aefa-492a48ca4e16)
 
 Provides a fully-featured Markdown bundle
 
