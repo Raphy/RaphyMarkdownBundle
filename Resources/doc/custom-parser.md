@@ -35,7 +35,7 @@ services:
     my_markdown_parser:
         class: AppBundle\Markdown\MyMarkdownParser
         tags:
-            - { name: markdown.parser, alias: my_markdown_parser } # The alias attribute is required
+            - { name: markdown.parser, alias: my_markdown_parser } # The alias attribute is required, it's the parser name
     # ...
 ```
 
@@ -43,7 +43,7 @@ services:
 
 Now we can use the Twig filter `markdown` with our new Markdown parser
 ```twig
-{{ my_var | markdown('my_markdown_parser') }}
+{{ my_var | markdown('my_markdown_parser') }} {# The parser name is the alias of the service tag #}
 ```
 
 ---
