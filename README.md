@@ -26,4 +26,4 @@ See the `doc` directory for more detailed documentation or just start with [main
 
 ## License
 
-See the [LICENSE] file for details.
+See the [LICENSE](LICENSE) file for details.
