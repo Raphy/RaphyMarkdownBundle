@@ -1,0 +1,24 @@
+{
+    "name": "raphy/markdown-bundle",
+    "description": "Provides a fully-featured Markdown bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Raphael De Freitas",
+            "email": "raphael@de-freitas.net"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Raphy\\Symfony\\MarkdownBundle\\": "."
+        }
+    },
+    "require": {
+        "erusev/parsedown": "^1.6"
+    },
+    "require-dev": {
+        "symfony/symfony": "^2.7|^3.0"
+    }
+}

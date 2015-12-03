@@ -1,0 +1,10 @@
+services:
+
+    raphy_markdown.parser.parsedown:
+        class: Raphy\Symfony\MarkdownBundle\Parser\ParsedownParser
+
+    raphy_markdown.twig.extension.markdown:
+        class: Raphy\Symfony\MarkdownBundle\Twig\Extension\MarkdownTwigExtension
+        arguments: ["@raphy_markdown.parser"]
+        tags:
+            - { name: twig.extension }
