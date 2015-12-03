@@ -67,7 +67,7 @@ class ParserCollection
      */
     public function getParser($name)
     {
-        if ($this->hasParser($name) == false) {
+        if ($this->hasParser($name) === false) {
             throw new \InvalidArgumentException(sprintf('The Markdown parser "%s" is not found.', $name));
         }
 
