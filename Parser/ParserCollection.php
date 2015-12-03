@@ -12,8 +12,6 @@
 namespace Raphy\Symfony\MarkdownBundle\Parser;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Class ParserCollection.
@@ -40,7 +38,7 @@ class ParserCollection
     /**
      * Adds a parser to collection.
      *
-     * @param string $name The parser name
+     * @param string                  $name   The parser name
      * @param MarkdownParserInterface $parser The MarkdownParserInterface instance
      */
     public function addParser($name, MarkdownParserInterface $parser)
@@ -49,9 +47,10 @@ class ParserCollection
     }
 
     /**
-     * Checks whether a parser is in collection
+     * Checks whether a parser is in collection.
      *
      * @param string $name
+     *
      * @return bool
      */
     public function hasParser($name)
@@ -71,13 +70,15 @@ class ParserCollection
         if ($this->hasParser($name) == false) {
             throw new \InvalidArgumentException(sprintf('The Markdown parser "%s" is not found.', $name));
         }
+
         return $this->parsers->get($name);
     }
 
     /**
-     * Removes a parser from collection
+     * Removes a parser from collection.
      *
      * @param string $name
+     *
      * @return MarkdownParserInterface|null
      */
     public function removeParser($name)
@@ -86,7 +87,7 @@ class ParserCollection
     }
 
     /**
-     * Gets the parsers collection
+     * Gets the parsers collection.
      *
      * @return ArrayCollection
      */
