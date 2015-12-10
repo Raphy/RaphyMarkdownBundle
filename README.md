@@ -10,7 +10,7 @@ Provides a fully-featured Markdown bundle
 
 The bundle supports:
 - PHP >= 5.4
-- Symfony ^2.7 | ^3.0
+- Symfony ^2.8 | ^3.0
 
 ## Documentation
 
