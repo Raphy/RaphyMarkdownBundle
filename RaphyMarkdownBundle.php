@@ -11,7 +11,8 @@
 
 namespace Raphy\Symfony\MarkdownBundle;
 
-use Raphy\Symfony\MarkdownBundle\DependencyInjection\Compiler\ParserPass;
+use Raphy\Symfony\MarkdownBundle\DependencyInjection\Compiler\ParserCompilerPass;
+use Raphy\Symfony\MarkdownBundle\DependencyInjection\Compiler\ResourceCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -27,6 +28,7 @@ class RaphyMarkdownBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
-        $container->addCompilerPass(new ParserPass());
+        $container->addCompilerPass(new ParserCompilerPass());
+        $container->addCompilerPass(new ResourceCompilerPass());
     }
 }

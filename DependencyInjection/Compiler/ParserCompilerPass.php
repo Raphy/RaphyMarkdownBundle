@@ -16,11 +16,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Class ParserPass.
+ * Class ParserCompilerPass.
  *
  * @author Raphael De Freitas <raphael@de-freitas.net>
  */
-class ParserPass implements CompilerPassInterface
+class ParserCompilerPass implements CompilerPassInterface
 {
     /**
      * {@inheritdoc}
