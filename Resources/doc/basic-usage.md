@@ -27,7 +27,7 @@ The editor uses the editor [SimpleMDE](https://github.com/NextStepWebs/simplemde
 To use the editor with Symfony forms:
 
 ```php
-$builder->add('field', 'markdown');
+$builder->add('field', MarkdownType::class);
 ```
 
 ---
