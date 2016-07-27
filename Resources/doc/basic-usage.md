@@ -30,6 +30,20 @@ To use the editor with Symfony forms:
 $builder->add('field', MarkdownType::class);
 ```
 
+Optionally you can define custom options for the MDE editor:
+
+```php
+$builder->add('field', MarkdownType::class,
+    array(
+        'mde_config' => array(
+            'spellChecker' => false,
+            'status' => false,
+            'showIcons' => array('code', 'table'),
+        ),
+    )
+);
+```
+
 ---
 
 &larr; [Installation](installation.md) | [Index](index.md) | [Configuration](configuration.md) &rarr;
