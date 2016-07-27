@@ -3,8 +3,8 @@
     <link href="{{ asset('bundles/raphymarkdown/css/markdown.min.css') }}" rel="stylesheet">
     <script src="{{ asset('bundles/raphymarkdown/js/markdown.min.js') }}"></script>
     <script type="text/javascript">
-        var markdown_editor_{{ id }} = new SimpleMDE({
-            element: document.getElementById('{{ id }}')
-        })
+        var config = JSON.parse('{{ mde_config|raw }}');
+        config.element = document.getElementById('{{ id }}');
+        var markdown_editor_{{ id }} = new SimpleMDE(config)
     </script>
 {% endblock %}
