@@ -13,7 +13,7 @@ Provides a fully-featured Markdown bundle
 # Requirements
 
 The bundle supports:
-- PHP >= 5.4
+- PHP ^5.5 | ^5.6
 - Symfony ^2.8 | ^3.0
 
 ## Documentation
