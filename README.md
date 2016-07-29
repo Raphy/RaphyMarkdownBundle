@@ -1,8 +1,12 @@
 # RaphyMarkdownBundle
 
-[![Build Status](https://img.shields.io/travis/Raphy/RaphyMarkdownBundle.svg)](https://travis-ci.org/Raphy/RaphyMarkdownBundle)
-[![GitHub license](https://img.shields.io/github/license/Raphy/RaphyMarkdownBundle.svg)](LICENSE)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/b675534d-9c5c-490a-aefa-492a48ca4e16/mini.png)](https://insight.sensiolabs.com/projects/b675534d-9c5c-490a-aefa-492a48ca4e16)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Raphy/RaphyMarkdownBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Raphy/RaphyMarkdownBundle/?branch=master)
+[![Build Status](https://img.shields.io/travis/Raphy/RaphyMarkdownBundle.svg)](https://travis-ci.org/Raphy/RaphyMarkdownBundle)
+[![Code Coverage](https://scrutinizer-ci.com/g/Raphy/RaphyMarkdownBundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Raphy/RaphyMarkdownBundle/?branch=master)
+[![Total Downloads](https://poser.pugx.org/raphy/markdown-bundle/downloads)](https://packagist.org/packages/raphy/markdown-bundle)
+[![Latest Stable Version](https://poser.pugx.org/raphy/markdown-bundle/v/stable)](https://packagist.org/packages/raphy/markdown-bundle)
+[![License](https://poser.pugx.org/raphy/markdown-bundle/license)](https://packagist.org/packages/raphy/markdown-bundle)
 
 Provides a fully-featured Markdown bundle
 
