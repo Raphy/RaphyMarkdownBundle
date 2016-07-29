@@ -1,8 +1,9 @@
 <?php
+
 namespace Raphy\Symfony\MarkdownBundle\Tests;
 
 /**
- * Class DefaultTest
+ * Class DefaultTest.
  *
  * @author Raphael De Freitas <raphael@de-freitas.net>
  */
