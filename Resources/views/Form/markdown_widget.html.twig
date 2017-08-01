@@ -1,10 +1,43 @@
 {% block markdown_widget %}
     <textarea {{ block('widget_attributes') }}>{{ value }}</textarea>
-    <link type="text/css" rel="stylesheet" href="{{ asset('bundles/raphymarkdown/css/markdown.min.css') }}">
-    <script type="text/javascript" src="{{ asset('bundles/raphymarkdown/js/markdown.min.js') }}"></script>
+
     <script type="text/javascript">
-        var simple_mde_config_{{ id }} = JSON.parse('{{ mde_config | json_encode | raw }}');
-        simple_mde_config_{{ id }}.element = document.getElementById('{{ id }}');
-        var simple_mde_{{ id }} = new SimpleMDE(simple_mde_config_{{ id }});
+        window._raphyMarkdownPendingEditors = window._raphyMarkdownPendingEditors || {};
+        window._raphyMarkdownPendingEditors[ {{ id|json_encode|raw }} ] = {{ mde_config|json_encode|raw }};
+
+        if (typeof window._raphyMarkdownAssetsIncluded === 'undefined') {
+            window._raphyMarkdownAssetsIncluded = true;
+
+            (function () {
+                var head  = document.getElementsByTagName('head')[0];
+                var link  = document.createElement('link');
+                link.rel  = 'stylesheet';
+                link.type = 'text/css';
+                link.href = {{ asset('bundles/raphymarkdown/css/markdown.min.css')|json_encode|raw }};
+                link.media = 'all';
+                head.appendChild(link);
+            })();
+
+            (function () {
+                var head = document.getElementsByTagName('head')[0];
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = {{ asset('bundles/raphymarkdown/js/markdown.min.js')|json_encode|raw }};
+                script.onreadystatechange = script.onload = _raphyMarkdownEditorsInit;
+                head.appendChild(script);
+            })();
+        }
+
+        function _raphyMarkdownEditorsInit() {
+            var config;
+            for (var id in window._raphyMarkdownPendingEditors) {
+                if (window._raphyMarkdownPendingEditors.hasOwnProperty(id)) {
+                    config = window._raphyMarkdownPendingEditors[id];
+                    config.element = document.getElementById(id);
+                    new SimpleMDE(config);
+                }
+            }
+            window._raphyMarkdownPendingEditors = {};
+        }
     </script>
 {% endblock %}
