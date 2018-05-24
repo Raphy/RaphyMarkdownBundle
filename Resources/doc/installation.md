@@ -49,6 +49,8 @@ public function registerBundles()
 }
 ```
 
+Note: When using Symfony Flex, the bundle will automatically be registered.
+
 ---
 
 [Index](index.md) | [Basic usage](basic-usage.md) &rarr;

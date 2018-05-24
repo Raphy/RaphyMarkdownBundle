@@ -9,8 +9,8 @@ Provides a fully-featured Markdown bundle
 # Requirements
 
 The bundle supports:
-- PHP >= 5.4
-- Symfony ^2.8 | ^3.0
+- PHP ^5.6 | ^7.0
+- Symfony ^2.8 | ^3.0 | ^4.0
 
 ## Documentation
 

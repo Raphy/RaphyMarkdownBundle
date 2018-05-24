@@ -26,13 +26,24 @@ class ResourceCompilerPass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        $templatingEngines = $container->getParameter('templating.engines');
+        $templatingEngines = $container->hasParameter('templating.engines')
+            ? $container->getParameter('templating.engines')
+            : [];
 
         if (in_array('twig', $templatingEngines)) {
             $container->setParameter('twig.form.resources', array_merge(
-                $container->getParameter('twig.form.resources'),
+                $this->getTwigFormResources($container),
                 array('RaphyMarkdownBundle:Form:markdown_widget.html.twig')
             ));
         }
+    }
+
+    private function getTwigFormResources(ContainerBuilder $container)
+    {
+        if (!$container->hasParameter('twig.form.resources')) {
+            return [];
+        }
+
+        return $container->getParameter('twig.form.resources');
     }
 }
