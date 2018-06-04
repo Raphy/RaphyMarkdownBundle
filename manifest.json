@@ -1,0 +1,5 @@
+{
+    "bundles": {
+        "Raphy\\Symfony\\MarkdownBundle\\RaphyMarkdownBundle": ["all"]
+    }
+}
